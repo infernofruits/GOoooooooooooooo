@@ -176,7 +176,173 @@
         }
         
 
-        .score-black
+        .score-black {
+            width: 100%;
+            flex-grow: 1;
+            background-color: #111;
+        }
+
+
+        .score-text {
+            position:absolute;
+            width: 100%;
+            text-align:center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+            left: 0;
+            pointer-events: none;
+        }
+
+
+        .score-text.top-text {
+            top: 5px;
+            color: #111;
+        }
+
+
+        .score-text.bottom-text {
+            bottom: 5px;
+            color: #f0f0f0;
+        }
+
+
+        .board-box {
+            position: relative;
+            background-color: var(--wood -board);
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+
+        #goCanvas {
+            cursor: pointer;
+            display: block;
+        }
+
+
+        .sidebar {
+            display: none;
+            flex-direction: column;
+            flex: 1;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            padding: 20px;
+            box-sizing: border-box;
+            justify-content: space-between;
+            min-width: 320px;
+            height: 540px;
+        }
+
+
+        .opponent-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--panel-bg);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .opponent-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius:50%;
+            background-size: cover;
+            background-position: center;
+            background-color:#444;
+            user-select:none;
+        }
+
+
+        .opponent-info h4{
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+
+        .chat-area {
+            flex-grow:1;
+            margin:15px 0;
+            background-color: var(--panel-bg);
+            border-radius: 6px;
+            border:1px solid var(--border-color);
+            display: flex;
+            flex-direction:column;
+            overflow: hidden;
+            height: 240px;
+        }
+
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y:auto;
+            display:flex;
+            flex-direction:column;
+            gap: 10px;
+        }
+         
+        
+        .msg {
+            max-width: 85%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+
+        .msg.ai {
+            background-color:var(--border-color);
+            color:var(--text-main);
+            align-self:flex-start;
+            border-top-left-radius: 0;
+        }
+
+
+        .msg.player {
+            background-color:var(--accent-green);
+            color:white;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+        }
+        
+
+        .system-status {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: white;
+        }
+
+        .btn-pass {
+            
+        }
+
+
             
             
 
