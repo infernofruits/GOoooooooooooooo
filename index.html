@@ -107,6 +107,77 @@
             border-color: var(--text-muted);
             background-color: rgba(255,255,255,0.05);
         }
+
+
+        .opt-btn-selected {
+            border-color: var(--accent-green);
+            background-color: rgba(129,182,76,0.15);
+        }
+
+
+        .personality-desc {
+            font-size: 0.74rem;
+            font-weight: normal;
+            color: var(--text-muted);
+            margin-top: 5px;
+            display: block;
+            line-height: 1.2;
+        }
+
+
+        .start.btn {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size:1.3rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor:pointer;
+            width: 100%;
+            max-width: 540px;
+            box-shadow: 0 4px 0 #5b8733;
+            transition: background 0.2s;
+        }
+
+
+        .start-btn:hover {
+            background-color: var(--accent-green-hover);
+        }
+
+
+        .board-wrapper {
+            display: none;
+            position: realtive;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+        .score-bar-container {
+            width: 240px;
+            height: 500px;
+            background-color: #222;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+
+        .score-white {
+            width: 100%;
+            height: 50%;
+            background-color: #f0f0f0;
+            transition: height 0.4s ease;
+        }
+        
+
+        .score-black
+            
             
 
 
