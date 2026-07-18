@@ -406,16 +406,40 @@
 
         <div class="board-wrapper" id="boardWrapper">
             <div class="score-white" id="scoreWhiteBar"></div>
-            <div class="score-black"></div>
-            <div class="score-text top-text" id="whiteScoreText">W: 5.5</div>
-            <div class="score-text bottom-text" id="blackScoreText">B:</div>
-        </div>
-        <div class="board-box">
-            <canvas id="goCanvas" width="500" height="500"></canvas>
-        </div>
-    </div>
+                <div class="score-black"></div>
+                <div class="score-text top-text" id="whiteScoreText">W: 5.5</div>
+                <div class="score-text bottom-text" id="blackScoreText">B:</div>
+            </div>
+            <div class="board-box">
+                <canvas id="goCanvas" width="500" height="500"></canvas>
+           </div>
+      </div>
 
-    <
+        <div class="sidebar" id="sidebarPanel">
+            <div class="opponent-card">
+                <div class="opponent-avatar" id="botAvatar"></div>
+                <div class="opponent-info">
+                    <h4 id="botName">Shin Jin-seo</h4>
+                    <span id="botTitle">9 Dan | Elo 3866</span>
+              </div>
+            </div>
+
+            <div class="chat-area">
+                <div class="chat-messages" id="chatMessages"></div>
+           </div>
+
+            <div class="system-status" id="gameStatus">Black to move</div>
+
+            <div class="action-buttons">
+                <button class="action-btn btn-pass" id="passBtn">Pass</button>
+                <button class="action-btn btn-resign" id="resignBtn">Resign</button>
+                <button class="action-btn btn-menu" id="menuBtn">Menu</button>
+            </div>
+        </div>
+  </div>
+            
+
+
             
 
 
