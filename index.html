@@ -369,10 +369,56 @@
 
 
 <body>
-
-
-
     
+    <div class="game-container">
+        <div class="setup-screen" id="setup-screen">
+            <h1 class="setup-title">Go/ Baduk</h1>
+
+            <div class="setup-section">
+                <h3>Select Your Stone Color</h3>
+                <div class="options-grid">
+                    <button class="opt-btn selected" data-side="b">Black<span class="personality-desc">Moves First</span></button>
+                    <button class="opt-btn" data-side="w">White<span calss="personality-desc">Gets + 5.5 Komi</span></button>
+                    <button class="opt-btn" data-side="r">Random<span class="personality-desc">Fair Selection</span></button>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <h3>Select Pro opponents</h3>
+                <div class="option-grid">
+                    <button class="opt-btn selected" data-ai="shin">
+                        Shin Jin-seo
+                        <span class="personality-desc">9 Dan | "The Shin-puter".Flawless AI Precision</span>
+                    </button>
+                    <button class="opt-btn" data-ai="kejie">
+                        Ke Jin
+                        <span class="personality-desc">9 Dan | Aggressive, Higley flexible fighter.</span>
+                    </button>
+                    <button class="opt-btn" data-ai="dingohao">
+                        Ding Hao
+                        <spin class="personality-desc">9 Dan | Calm,patient global strategist</spin>
+                    </button>
+                </div>
+            </div>
+
+            <button class="start-btn" if="startGameBtn">Match Player</button>
+        </div>
+
+        <div class="board-wrapper" id="boardWrapper">
+            <div class="score-white" id="scoreWhiteBar"></div>
+            <div class="score-black"></div>
+            <div class="score-text top-text" id="whiteScoreText">W: 5.5</div>
+            <div class="score-text bottom-text" id="blackScoreText">B:</div>
+        </div>
+        <div class="board-box">
+            <canvas id="goCanvas" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <
+            
+
+
 </body>
 
             
