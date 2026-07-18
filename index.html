@@ -436,8 +436,74 @@
                 <button class="action-btn btn-menu" id="menuBtn">Menu</button>
             </div>
         </div>
-  </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        const BOARD_SIZE = 9;
+        let board=Array(BOARD_SIZE).fill(null).map(() => Array((BOARD_SIZE).fill(0)));
+        let playerColor= 1;
+        let aiCOlor= 2;
+        let currentTurn =1;
+        let aiPersonality='shin';
+        let captures= {1: 0, 2:0};
+        let komi =5.5;
+        let lastMove = null;
+        let gameOver= false;
+        let passCount =0;
+
+        const botMeta = {
+            shin: {
+                name: "Shin Jin-seo",
+                title:"9 Dan | World No.1",
+                avatarBg: "#2980b9",
+                quotes: {
+                    start: ["Let's Check your shape optimization.", "My network paths suggest a clean sequence ahead.","Greetings. Let us plau an accurate match."],
+                    playerMove: ["A shape with local value, but globally inefficient.", "Calcualted..... adjustements are minimal."],
+                    aiMove: ["Perfecting efficiency in the local center.","Squeexing down your thickness."],
+                    capture:["Your group has tun out of liberties.", "An inevitable geometric reading."],
+                    win: ["The endgame calculation verified a clear win. Thank you for the match.","ANalysis finished. Your shapes left too many cut points."],
+                    lose:["Remarkable reading. You completely out-calculated my shape profile."]
+                }
+            },
+
+            kejie: {
+                name:"Ke Jie",
+                title:"9 Dan | 8-Time Champion",
+                initials: "KJ",
+                avatarBg: "#c0392b",
+                quotes: {
+                   start:["Think you can match my speed? Let's fight!","BE prepared to adapt quickly, my extension are erratic!","Let's make this an unforgettable high-tension fight."],
+                    playerMove: ["Hah! A direct challenge? I like your confidence!", "Bold extension! But can you protect its vulnerabilities?"],
+                    aiMove:["Watch this! A dynamic counter-wedge!","I'm coming straight for your cital eyespace"],
+                    capture:["Gotcha! That entire dragon is coming off the board!","Too greedy! Your liberties vanishied!"],
+                    win:["Haha, clean victory! You need to read faster!","Good game! My invasion was just a step ahead."],
+                    lose:["Unbelievable...I completely misread that slash.Brillant game."]
+                }
+            },            
             
+            dinghao: {
+                name:"Ding Hao",
+                title: "9 Dan | LG Cup Champion",
+                initials:"DH",
+                avatarBg:"#16a085",
+                quotes: {
+                    start: ["Let's build global harmony across the intersections.","A patient mind revels the best paths."],
+                    playerMove:["A pragmatic choice.Solid structure.","You honor defense. That's strong principle."],
+                    aiMove:["Stepping back to secure an ironclad wall.","Expanding territory smoothly from the side"],
+                    capture:["The stone returns to the bowl. It is simply natural flow","An overextension yield its liberties."],
+                    win:["Patience wins the territory game. Thank you for the peaceful match.","The score shows the result of early strucutre safely. "],
+                    lose:["Your calm reading compleetely unraveled my safety profile.Excellent Go"]
+                }
+            }
+        };
+
+
+
+
+
+
+
+    </script>
 
 
             
