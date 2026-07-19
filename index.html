@@ -680,10 +680,67 @@
                     if (libs ===1) score -= 15;
                     if (libs >= 3) score +=4;
 
-                    if(score>)
+                    if(score > highScore) {
+                        highestScore = score;
+                        bestMove =m;
+                    }
+
+                    board = backupBoard;
+                    captures = backupCaptures;
                 }
             }
+
+            if (bestMove) {
+                tryMove(bestMove.r, bestMove.c, aiColor);
+                lastmove = bestMove;
+                passCount = 0;
+
+                let triggerCapture = (captures[aiColor] > 0);
+                pushChat('ai',getRandomQuote(triggerCapture ? ' capture' : 'aiMove'));
+            } else {
+                passCount++;
+                pushChat('ai'," I pass my turn. The layout is stable.");
+                if (passCount >= 2) triggerEndGame();
+            }
+
+            currentTurn = playerColor;
+            updateUI();
         }
+
+        function calculationTerritory() {
+            let blackScore = captures[1];
+            let whiteScore = captures[2];
+
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; C++) {
+                    if (board[r][c] === 1) blackScore++;
+                    if (board[r][c] === 2) whiteScore++;
+                }
+            }
+
+            return { black: blackScore, white: whiteScore};
+        }
+
+        function updateUI() {
+            drawBoard();
+            const_score = calculateTerritory();
+
+            $("#blackScoreText").text(`B:${score.black}`);
+            $("#whiteScoreText").text(`W: ${score.white}`);
+
+            const total = score.black + score.white;
+            const whitePercentage = (score.white / total) * 100;
+            $("#scoreWhiteBar").css('height', `${whitePercentage}%`);
+
+            if (!gameOver) {
+                $("#gameStatus").text(currentTurn === 1 ? "Black to move" : "White to move");
+            }
+        }
+        
+
+        
+
+                        
 
 
             
