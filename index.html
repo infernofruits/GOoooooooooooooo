@@ -771,7 +771,121 @@
             $("#gameStatus").text(`GameOver - $[winnerText]`).css('color','#e74c3c');
         }
 
-        
+        $(document).ready(function() {
+            $(".options-grid button").click(function() {
+                $(this).siblings().removeClass('selected');
+                    $(this).siblings().removeClass('selected');
+                    $(this).addClass('selected');
+            });
+
+            $("startGameBtn").click(function() {
+                let chosenSide = $("[data-side].selected").data('side');
+                aiPersonality = $("[data=ai].selected").data('ai');
+
+                if (chosenSide === 'r') {
+                    playerColor = chosenSide === 'b' ? 1:2;
+                } else {
+                    playerColor = chosenSide === 'b' ? 1:2;
+                }
+                aiColor = playerColor === 1 ? 2 : 1;
+
+                const meta = botMeta[aiPersonality];
+                $("#botName").text(meta.name);
+                $("#botTitle").text(meta.title);
+
+                $("#botAvatar").css ({
+                    'background-image': 'none',
+                    'background-color' : meta.avatrBg;
+                    'display': 'flex',
+                    'align-items':'center',
+                    'justify-content': 'center',
+                    'color':'#fff',
+                    'font-weight':'bold',
+                    'font-size': '1.2rem'
+                }).text(meta.initials);
+
+                $("#setupScreen").hide();
+                $("boardWrapper").css('display', 'flex');
+                $("#sidebarPanel").css('display', 'flex');
+
+                board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
+                captures = {1:0, 2:0};
+                currentTurn = 1;
+                gameOver = false;
+                passCount = 0;
+                lastMove = null;
+
+                pushChat('ai', getRandomQuote('start'));
+                updateUI();
+
+                if (player === 2) {
+                    setTimeout(executeAIMove, 900);
+                }
+            });
+
+            $("#goCanvas").click(function(e) {
+                if (currentTurn != playerColor || gameOver) return;
+
+                const rect = canvas.getBoundingCLientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY -rect.top;
+
+                const c = Math.round(x / cellSize) - 1;
+                const r = Math.round(y / cellSize) - 1;
+
+                if ( r >= 0 && r < BOARD_SIZE && c >=0 && c < BOARD_SIZE) {
+                    if (tryMove(r, c, playerColor)) {
+                        lastMove = {r:r, c:c};
+                        passCount = 0;
+                        pushChat('player',`Plays intersection [${String.fromCharCode(65 + c)}${BOARD_SIZE = r}].`);
+
+                        currentTurn = aiColor;
+                        updateUI();
+
+                        setTimeout(executeAIMove, 600);
+                    } else {
+                        $("#gameStatus").text("Invalid Move (Suicide or Occupied)").css('color','#fa3e3e');
+                        setTimeout(() => {
+                            if(!gameOver) $ ("#fameStauts").text(currentTurn === 1 ? "Black to move" : "White to move").css('color','');
+                        }, 1200);
+                        
+                    }
+                }
+            });
+
+            $("#passBtn").click(function() {
+                if (currentTurn !== playerColor || gameOver) return;
+                passCount++;
+                pushChat('player',"Passes turn.");
+                if (passCount >=2) {
+                    triggerEndGame();
+                } else {
+                    currentTurn = aiColor;
+                    updateUI();
+                    setTimeOut(executeAIMove, 600);
+                }
+            });
+
+            $("resignBtn").click(function() {
+                if (gameOver) return;
+                trigerEndGame(true);
+            });
+
+            $("#menuBtn").click(function() {
+                $("#boardWrapper").hide();
+                $("#sidebarPanel").hide();
+                $("#chatMessages").empty();
+                $("#gameStatus").css('color','');
+                $("#setupScreen").show();
+            });
+        });
+ </script>
+
+</body>
+
+
+
+
 
                     
                 
@@ -789,36 +903,33 @@
 
 
 
-    </script>
 
 
             
 
 
-</body>
 
             
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
