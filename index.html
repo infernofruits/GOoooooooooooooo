@@ -1,16 +1,15 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scle=1.0">
-    <title>GO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Go vs Personalities</title>
     <style>
-
         :root {
             --bg-color: #302e2b;
             --panel-bg: #262522;
             --text-main: #ffffff;
-            --text-muted: #81b64c;
+            --text-muted: #bababa;
             --accent-green: #81b64c;
             --accent-green-hover: #a3d16c;
             --border-color: #403e3b;
@@ -18,11 +17,11 @@
             --wood-lines: #543d2b;
         }
 
-
         body {
-            font-family:'Segoe UI' Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,9 +30,8 @@
             box-sizing: border-box;
         }
 
-
         .game-container {
-            display:flex;
+            display: flex;
             gap: 20px;
             max-width: 1100px;
             width: 100%;
@@ -41,9 +39,8 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            position: realtive;
+            position: relative;
         }
-
 
         .setup-screen {
             display: flex;
@@ -55,20 +52,17 @@
             padding: 40px 20px;
         }
 
-
         .setup-title {
             font-size: 2.5rem;
             margin-bottom: 30px;
             color: var(--text-main);
         }
 
-
         .setup-section {
             margin-bottom: 30px;
             width: 100%;
             max-width: 540px;
         }
-
 
         .setup-section h3 {
             color: var(--text-muted);
@@ -78,16 +72,14 @@
             letter-spacing: 1px;
         }
 
-
         .options-grid {
-            display:grid;
+            display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
-
         .opt-btn {
-            background-color : var(--bg-color);
+            background-color: var(--bg-color);
             border: 2px solid var(--border-color);
             color: var(--text-main);
             padding: 15px 10px;
@@ -96,27 +88,24 @@
             font-size: 1rem;
             font-weight: bold;
             transition: all 0.2s ease;
-            display:flex;
-            flex-direction:column;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-
 
         .opt-btn:hover {
             border-color: var(--text-muted);
             background-color: rgba(255,255,255,0.05);
         }
 
-
-        .opt-btn-selected {
+        .opt-btn.selected {
             border-color: var(--accent-green);
-            background-color: rgba(129,182,76,0.15);
+            background-color: rgba(129, 182, 76, 0.15);
         }
 
-
         .personality-desc {
-            font-size: 0.74rem;
+            font-size: 0.75rem;
             font-weight: normal;
             color: var(--text-muted);
             margin-top: 5px;
@@ -124,39 +113,35 @@
             line-height: 1.2;
         }
 
-
-        .start.btn {
+        .start-btn {
             background-color: var(--accent-green);
             color: white;
             border: none;
             padding: 18px 40px;
-            font-size:1.3rem;
+            font-size: 1.3rem;
             font-weight: bold;
             border-radius: 6px;
-            cursor:pointer;
+            cursor: pointer;
             width: 100%;
             max-width: 540px;
             box-shadow: 0 4px 0 #5b8733;
             transition: background 0.2s;
         }
 
-
         .start-btn:hover {
             background-color: var(--accent-green-hover);
         }
 
-
         .board-wrapper {
             display: none;
-            position: realtive;
+            position: relative;
             flex-direction: row;
             align-items: center;
             gap: 20px;
         }
 
-
         .score-bar-container {
-            width: 240px;
+            width: 24px;
             height: 500px;
             background-color: #222;
             border-radius: 4px;
@@ -167,14 +152,12 @@
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
         }
 
-
         .score-white {
             width: 100%;
             height: 50%;
             background-color: #f0f0f0;
             transition: height 0.4s ease;
         }
-        
 
         .score-black {
             width: 100%;
@@ -182,11 +165,10 @@
             background-color: #111;
         }
 
-
         .score-text {
-            position:absolute;
+            position: absolute;
             width: 100%;
-            text-align:center;
+            text-align: center;
             font-size: 0.7rem;
             font-weight: bold;
             z-index: 10;
@@ -194,33 +176,28 @@
             pointer-events: none;
         }
 
-
         .score-text.top-text {
             top: 5px;
             color: #111;
         }
-
 
         .score-text.bottom-text {
             bottom: 5px;
             color: #f0f0f0;
         }
 
-
         .board-box {
             position: relative;
-            background-color: var(--wood -board);
+            background-color: var(--wood-board);
             padding: 20px;
             border-radius: 6px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
-
         #goCanvas {
             cursor: pointer;
             display: block;
         }
-
 
         .sidebar {
             display: none;
@@ -235,7 +212,6 @@
             height: 540px;
         }
 
-
         .opponent-card {
             display: flex;
             align-items: center;
@@ -249,43 +225,44 @@
         .opponent-avatar {
             width: 50px;
             height: 50px;
-            border-radius:50%;
+            border-radius: 50%;
             background-size: cover;
             background-position: center;
-            background-color:#444;
-            user-select:none;
+            background-color: #444;
+            user-select: none;
         }
 
+        .opponent-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
 
-        .opponent-info h4{
+        .opponent-info span {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-
         .chat-area {
-            flex-grow:1;
-            margin:15px 0;
+            flex-grow: 1;
+            margin: 15px 0;
             background-color: var(--panel-bg);
             border-radius: 6px;
-            border:1px solid var(--border-color);
+            border: 1px solid var(--border-color);
             display: flex;
-            flex-direction:column;
+            flex-direction: column;
             overflow: hidden;
             height: 240px;
         }
 
-
         .chat-messages {
             flex-grow: 1;
             padding: 15px;
-            overflow-y:auto;
-            display:flex;
-            flex-direction:column;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
             gap: 10px;
         }
-         
-        
+
         .msg {
             max-width: 85%;
             padding: 10px 12px;
@@ -294,22 +271,19 @@
             line-height: 1.4;
         }
 
-
         .msg.ai {
-            background-color:var(--border-color);
-            color:var(--text-main);
-            align-self:flex-start;
+            background-color: var(--border-color);
+            color: var(--text-main);
+            align-self: flex-start;
             border-top-left-radius: 0;
         }
 
-
         .msg.player {
-            background-color:var(--accent-green);
-            color:white;
+            background-color: var(--accent-green);
+            color: white;
             align-self: flex-end;
             border-top-right-radius: 0;
         }
-        
 
         .system-status {
             font-size: 0.95rem;
@@ -341,79 +315,74 @@
         .btn-pass {
             background-color: #3498db;
         }
-
         .btn-pass:hover {
             background-color: #2980b9;
         }
 
-
         .btn-resign {
-            background-color:#fa3e3e;
+            background-color: #fa3e3e;
         }
 
         .btn-resign:hover {
-            background-color:#ff5252;
+            background-color: #ff5252;
         }
-
 
         .btn-menu {
             background-color: #403e3b;
         }
 
-
         .btn-menu:hover {
             background-color: #4f4d49;
         }
     </style>
- </head>
-
-
+</head>
 <body>
-    
-    <div class="game-container">
-        <div class="setup-screen" id="setup-screen">
-            <h1 class="setup-title">Go/ Baduk</h1>
 
+    <div class="game-container">
+        <div class="setup-screen" id="setupScreen">
+            <h1 class="setup-title">Premium Go / Baduk</h1>
+            
             <div class="setup-section">
                 <h3>Select Your Stone Color</h3>
                 <div class="options-grid">
                     <button class="opt-btn selected" data-side="b">Black<span class="personality-desc">Moves First</span></button>
-                    <button class="opt-btn" data-side="w">White<span calss="personality-desc">Gets + 5.5 Komi</span></button>
+                    <button class="opt-btn" data-side="w">White<span class="personality-desc">Gets +5.5 Komi</span></button>
                     <button class="opt-btn" data-side="r">Random<span class="personality-desc">Fair Selection</span></button>
                 </div>
             </div>
 
             <div class="setup-section">
-                <h3>Select Pro opponents</h3>
-                <div class="option-grid">
+                <h3>Select Pro Opponent</h3>
+                <div class="options-grid">
                     <button class="opt-btn selected" data-ai="shin">
                         Shin Jin-seo
-                        <span class="personality-desc">9 Dan | "The Shin-puter".Flawless AI Precision</span>
+                        <span class="personality-desc">9 Dan | "The Shin-puter". Flawless AI precision.</span>
                     </button>
                     <button class="opt-btn" data-ai="kejie">
-                        Ke Jin
-                        <span class="personality-desc">9 Dan | Aggressive, Higley flexible fighter.</span>
+                        Ke Jie
+                        <span class="personality-desc">9 Dan | Aggressive, highly flexible fighter.</span>
                     </button>
-                    <button class="opt-btn" data-ai="dingohao">
+                    <button class="opt-btn" data-ai="dinghao">
                         Ding Hao
-                        <spin class="personality-desc">9 Dan | Calm,patient global strategist</spin>
+                        <span class="personality-desc">9 Dan | Calm, patient global strategist.</span>
                     </button>
                 </div>
             </div>
 
-            <button class="start-btn" if="startGameBtn">Match Player</button>
+            <button class="start-btn" id="startGameBtn">Match Player</button>
         </div>
 
         <div class="board-wrapper" id="boardWrapper">
-            <div class="score-white" id="scoreWhiteBar"></div>
+            <div class="score-bar-container">
+                <div class="score-white" id="scoreWhiteBar"></div>
                 <div class="score-black"></div>
                 <div class="score-text top-text" id="whiteScoreText">W: 5.5</div>
-                <div class="score-text bottom-text" id="blackScoreText">B:</div>
+                <div class="score-text bottom-text" id="blackScoreText">B: 0</div>
             </div>
             <div class="board-box">
                 <canvas id="goCanvas" width="500" height="500"></canvas>
-           </div>
-      </div>
+            </div>
+        </div>
 
         <div class="sidebar" id="sidebarPanel">
             <div class="opponent-card">
@@ -421,15 +390,15 @@
                 <div class="opponent-info">
                     <h4 id="botName">Shin Jin-seo</h4>
                     <span id="botTitle">9 Dan | Elo 3866</span>
-              </div>
+                </div>
             </div>
 
             <div class="chat-area">
                 <div class="chat-messages" id="chatMessages"></div>
-           </div>
+            </div>
 
             <div class="system-status" id="gameStatus">Black to move</div>
-
+            
             <div class="action-buttons">
                 <button class="action-btn btn-pass" id="passBtn">Pass</button>
                 <button class="action-btn btn-resign" id="resignBtn">Resign</button>
@@ -437,111 +406,110 @@
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         const BOARD_SIZE = 9;
-        let board=Array(BOARD_SIZE).fill(null).map(() => Array((BOARD_SIZE).fill(0)));
-        let playerColor= 1;
-        let aiCOlor= 2;
-        let currentTurn =1;
-        let aiPersonality='shin';
-        let captures= {1: 0, 2:0};
-        let komi =5.5;
+        let board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
+        let playerColor = 1;
+        let aiColor = 2;
+        let currentTurn = 1;
+        let aiPersonality = 'shin';
+        let captures = { 1: 0, 2: 0 };
+        let komi = 5.5;
         let lastMove = null;
-        let gameOver= false;
-        let passCount =0;
+        let gameOver = false;
+        let passCount = 0;
 
         const botMeta = {
             shin: {
                 name: "Shin Jin-seo",
-                title:"9 Dan | World No.1",
+                title: "9 Dan | World No. 1",
+                initials: "SJ",
                 avatarBg: "#2980b9",
                 quotes: {
-                    start: ["Let's Check your shape optimization.", "My network paths suggest a clean sequence ahead.","Greetings. Let us plau an accurate match."],
-                    playerMove: ["A shape with local value, but globally inefficient.", "Calcualted..... adjustements are minimal."],
-                    aiMove: ["Perfecting efficiency in the local center.","Squeexing down your thickness."],
-                    capture:["Your group has tun out of liberties.", "An inevitable geometric reading."],
-                    win: ["The endgame calculation verified a clear win. Thank you for the match.","ANalysis finished. Your shapes left too many cut points."],
-                    lose:["Remarkable reading. You completely out-calculated my shape profile."]
+                    start: ["Let's check your shape optimizations.", "My network paths suggest a clean sequence ahead.", "Greetings. Let us play an accurate match."],
+                    playerMove: ["A shape with local value, but globally inefficient.", "Calculated... adjustments are minimal."],
+                    aiMove: ["Perfecting efficiency in the local center.", "Squeezing down your thickness."],
+                    capture: ["Your group has run out of liberties.", "An inevitable geometric reading."],
+                    win: ["The endgame calculation verified a clear win. Thank you for the match.", "Analysis finished. Your shapes left too many cut points."],
+                    lose: ["Remarkable reading. You completely out-calculated my shape profile."]
                 }
             },
-
             kejie: {
-                name:"Ke Jie",
-                title:"9 Dan | 8-Time Champion",
+                name: "Ke Jie",
+                title: "9 Dan | 8-Time Champion",
                 initials: "KJ",
                 avatarBg: "#c0392b",
                 quotes: {
-                   start:["Think you can match my speed? Let's fight!","BE prepared to adapt quickly, my extension are erratic!","Let's make this an unforgettable high-tension fight."],
+                    start: ["Think you can match my speed? Let's fight!", "Be prepared to adapt quickly, my extensions are erratic!", "Let's make this an unforgettable high-tension fight."],
                     playerMove: ["Hah! A direct challenge? I like your confidence!", "Bold extension! But can you protect its vulnerabilities?"],
-                    aiMove:["Watch this! A dynamic counter-wedge!","I'm coming straight for your cital eyespace"],
-                    capture:["Gotcha! That entire dragon is coming off the board!","Too greedy! Your liberties vanishied!"],
-                    win:["Haha, clean victory! You need to read faster!","Good game! My invasion was just a step ahead."],
-                    lose:["Unbelievable...I completely misread that slash.Brillant game."]
+                    aiMove: ["Watch this! A dynamic counter-wedge!", "I'm coming straight for your vital eyespace!"],
+                    capture: ["Gotcha! That entire dragon is coming off the board!", "Too greedy! Your liberties vanished!"],
+                    win: ["Haha, clean victory! You need to read faster!", "Good game! My invasion was just a step ahead."],
+                    lose: ["Unbelievable... I completely misread that slash. Brilliant game."]
                 }
-            },            
-            
+            },
             dinghao: {
-                name:"Ding Hao",
+                name: "Ding Hao",
                 title: "9 Dan | LG Cup Champion",
-                initials:"DH",
-                avatarBg:"#16a085",
+                initials: "DH",
+                avatarBg: "#16a085",
                 quotes: {
-                    start: ["Let's build global harmony across the intersections.","A patient mind revels the best paths."],
-                    playerMove:["A pragmatic choice.Solid structure.","You honor defense. That's strong principle."],
-                    aiMove:["Stepping back to secure an ironclad wall.","Expanding territory smoothly from the side"],
-                    capture:["The stone returns to the bowl. It is simply natural flow","An overextension yield its liberties."],
-                    win:["Patience wins the territory game. Thank you for the peaceful match.","The score shows the result of early strucutre safely. "],
-                    lose:["Your calm reading compleetely unraveled my safety profile.Excellent Go"]
+                    start: ["Let's build global harmony across the intersections.", "A patient mind reveals the best paths."],
+                    playerMove: ["A pragmatic choice. Solid structure.", "You honor defense. That's a strong principle."],
+                    aiMove: ["Stepping back to secure an ironclad wall.", "Expanding territory smoothly from the side."],
+                    capture: ["The stone returns to the bowl. It is simply natural flow.", "An overextension yields its liberties."],
+                    win: ["Patience wins the territory game. Thank you for the peaceful match.", "The score shows the result of early structural safety."],
+                    lose: ["Your calm reading completely unraveled my safety profile. Excellent Go."]
                 }
             }
         };
 
         const canvas = document.getElementById('goCanvas');
         const ctx = canvas.getContext('2d');
-        const cellsize = canvas.width / (BOARD_SIZE + 1);
+        const cellSize = canvas.width / (BOARD_SIZE + 1);
 
         function drawBoard() {
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             ctx.strokeStyle = varColor('--wood-lines');
             ctx.lineWidth = 1.5;
-            for ( let i = 1; i <= BOARD_SIZE; i++) {
+            for (let i = 1; i <= BOARD_SIZE; i++) {
                 ctx.beginPath();
                 ctx.moveTo(cellSize, i * cellSize);
-                ctx.lineTo(canvas.width - cellSize, i* cellSize);
+                ctx.lineTo(canvas.width - cellSize, i * cellSize);
                 ctx.stroke();
-
+                
                 ctx.beginPath();
-                ctx.moveTo(i* cellSize, cellSize);
-                ctx.lineTo(i* cellSize, canvas.height - cellSize);
-                stx.stroke();
+                ctx.moveTo(i * cellSize, cellSize);
+                ctx.lineTo(i * cellSize, canvas.height - cellSize);
+                ctx.stroke();
             }
+
             ctx.fillStyle = varColor('--wood-lines');
-            ctx.begiPath();
-            ctx.arc(5 * cellsize, 5* cellSize , 4, 0, 2* Math.PI);
+            ctx.beginPath();
+            ctx.arc(5 * cellSize, 5 * cellSize, 4, 0, 2 * Math.PI);
             ctx.fill();
 
-            for(let r=0; r < BOARD_SIZE; r++) {
-                for ( let c = 0; c < BOARD_SIZE; c++) {
-                    if (board[r][c] !==0){
-
-                        const x = (c+1) * cellSize;
-                        const y = (r+1) * cellSize;
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
+                    if (board[r][c] !== 0) {
+                        const x = (c + 1) * cellSize;
+                        const y = (r + 1) * cellSize;
                         const radius = cellSize * 0.43;
 
                         ctx.beginPath();
-                        ctx.arc(x,y,radius,0,2 * Math.PI);
-
-                        if(board[r][c] === 1 ) {
-                            let grad = ctx.createRadialGradient(x - radius*0.15, y - randius*0.15, radius*0.1,x,y,radies);
+                        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                        
+                        if (board[r][c] === 1) {
+                            let grad = ctx.createRadialGradient(x - radius*0.15, y - radius*0.15, radius*0.1, x, y, radius);
                             grad.addColorStop(0, '#444');
                             grad.addColorStop(1, '#111');
                             ctx.fillStyle = grad;
                             ctx.fill();
                         } else {
-                        
-                            let grad = ctx.createRadialGradient(x -radius*0.2 , y- radius*0.2, radius*0.1,x,y,radius);
+                            let grad = ctx.createRadialGradient(x - radius*0.2, y - radius*0.2, radius*0.1, x, y, radius);
                             grad.addColorStop(0, '#ffffff');
                             grad.addColorStop(1, '#d6d6d6');
                             ctx.fillStyle = grad;
@@ -551,11 +519,11 @@
                             ctx.stroke();
                         }
 
-                        if(lastMove && lastMove.r === r && lastMove.c === c ) {
+                        if (lastMove && lastMove.r === r && lastMove.c === c) {
                             ctx.strokeStyle = '#e74c3c';
                             ctx.lineWidth = 3;
                             ctx.beginPath();
-                            ctx.arc(x,y,radius*0.4, 0, 2* Math.PI);
+                            ctx.arc(x, y, radius * 0.4, 0, 2 * Math.PI);
                             ctx.stroke();
                         }
                     }
@@ -564,29 +532,30 @@
         }
 
         function varColor(name) {
-            return getCOmptedStyle(document.documentElement).getPropertyValue(name).trim();
+            return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
         }
 
         function getNeighbors(r, c) {
             const n = [];
-            if ( r > 0) n.push({r: r-1 , c:c});
-            if (r < BOARD_SIZE -1 ) n.push({r: r + 1, c:c});
-            if (c > 0) n.push({r:r,c: c+1});
+            if (r > 0) n.push({r: r - 1, c: c});
+            if (r < BOARD_SIZE - 1) n.push({r: r + 1, c: c});
+            if (c > 0) n.push({r: r, c: c - 1});
+            if (c < BOARD_SIZE - 1) n.push({r: r, c: c + 1});
             return n;
         }
 
-        function getChain(startR, startC, color, visited=new Set()) {
-            const key =`${startR}, ${startC}`;
-            if (visited.has(key)) return[];
-
+        function getChain(startR, startC, color, visited = new Set()) {
+            const key = `${startR},${startC}`;
+            if (visited.has(key)) return [];
+            
             const chain = [{r: startR, c: startC}];
-            visit.added(key);
+            visited.add(key);
 
             const neighbors = getNeighbors(startR, startC);
             for (let n of neighbors) {
                 if (board[n.r][n.c] === color) {
                     const subChain = getChain(n.r, n.c, color, visited);
-                    chain.push(...subChain)
+                    chain.push(...subChain);
                 }
             }
             return chain;
@@ -595,25 +564,27 @@
         function getLiberties(chain) {
             const liberties = new Set();
             for (let stone of chain) {
-                const neighbors=getNeighbors(stone.r, stone.c);
-                if (board[n.r][n.c] === 0) {
-                    liberties.add(`${n.r},${n.c}`);
+                const neighbors = getNeighbors(stone.r, stone.c);
+                for (let n of neighbors) {
+                    if (board[n.r][n.c] === 0) {
+                        liberties.add(`${n.r},${n.c}`);
+                    }
                 }
             }
+            return liberties.size;
         }
-
 
         function checkBoardCaptures(oppColor) {
             let stonesCaptured = 0;
             const visited = new Set();
 
-            for (let r= 0; r < BOARD_SIZE; r++) {
+            for (let r = 0; r < BOARD_SIZE; r++) {
                 for (let c = 0; c < BOARD_SIZE; c++) {
-                    if (board[r][c]=== oppColor && !visited.has(`${r},${c}`)) {
-                        const chain = getChain(r,c, coppColor, visited);
-                        if(getLiberties(chain)=== 0) {
+                    if (board[r][c] === oppColor && !visited.has(`${r},${c}`)) {
+                        const chain = getChain(r, c, oppColor, visited);
+                        if (getLiberties(chain) === 0) {
                             stonesCaptured += chain.length;
-                            for(let stone of chain) {
+                            for (let stone of chain) {
                                 board[stone.r][stone.c] = 0;
                             }
                         }
@@ -624,20 +595,20 @@
         }
 
         function tryMove(r, c, color) {
-            if(board[r][c] !== 0 || gameOver) return false;
+            if (board[r][c] !== 0 || gameOver) return false;
 
             board[r][c] = color;
-            const oppColor = color === 1 ? 2:1;
+            const oppColor = color === 1 ? 2 : 1;
 
             const capturedCount = checkBoardCaptures(oppColor);
 
-            if(capturedCount > 0) {
+            if (capturedCount > 0) {
                 captures[color] += capturedCount;
                 return true;
             }
 
             const selfChain = getChain(r, c, color);
-            if(getLiberties(selfChain) === 0) {
+            if (getLiberties(selfChain) === 0) {
                 board[r][c] = 0;
                 return false;
             }
@@ -646,23 +617,23 @@
         }
 
         function executeAIMove() {
-            if(gameOver) return;
+            if (gameOver) return;
 
             let bestMove = null;
-            let highScore = -1000;
+            let highestScore = -1000;
 
             let validMoves = [];
-            for ( let r = 0; r < BOARD_SIZE; r++) {
-                for (let c=0; c < BOARD_SIZE; c++) {
+            for (let r = 0; r < BOARD_SIZE; r++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
                     if (board[r][c] === 0) {
-                        validMoves.push({r: r, c:c});
+                        validMoves.push({r: r, c: c});
                     }
                 }
             }
 
             validMoves.sort(() => Math.random() - 0.5);
 
-            for(let m of validMoves) {
+            for (let m of validMoves) {
                 let backupBoard = board.map(row => [...row]);
                 let backupCaptures = {...captures};
 
@@ -672,17 +643,17 @@
                     let roundCaptures = captures[aiColor] - backupCaptures[aiColor];
                     score += roundCaptures * 25;
 
-                    let distFromCenter = Math.abs(4 -m.r) + Math.abs(4 - m.c);
-                    score +=(4 - distFromCenter) * 1.5;
+                    let distFromCenter = Math.abs(4 - m.r) + Math.abs(4 - m.c);
+                    score += (4 - distFromCenter) * 1.5;
 
-                    let selfChain = getChain(m.r , m.c , aiColor);
+                    let selfChain = getChain(m.r, m.c, aiColor);
                     let libs = getLiberties(selfChain);
-                    if (libs ===1) score -= 15;
-                    if (libs >= 3) score +=4;
+                    if (libs === 1) score -= 15;
+                    if (libs >= 3) score += 4;
 
-                    if(score > highScore) {
+                    if (score > highestScore) {
                         highestScore = score;
-                        bestMove =m;
+                        bestMove = m;
                     }
 
                     board = backupBoard;
@@ -692,14 +663,14 @@
 
             if (bestMove) {
                 tryMove(bestMove.r, bestMove.c, aiColor);
-                lastmove = bestMove;
+                lastMove = bestMove;
                 passCount = 0;
-
+                
                 let triggerCapture = (captures[aiColor] > 0);
-                pushChat('ai',getRandomQuote(triggerCapture ? ' capture' : 'aiMove'));
+                pushChat('ai', getRandomQuote(triggerCapture ? 'capture' : 'aiMove'));
             } else {
                 passCount++;
-                pushChat('ai'," I pass my turn. The layout is stable.");
+                pushChat('ai', "I pass my turn. The layout is stable.");
                 if (passCount >= 2) triggerEndGame();
             }
 
@@ -709,23 +680,23 @@
 
         function calculateTerritory() {
             let blackScore = captures[1];
-            let whiteScore = captures[2];
+            let whiteScore = captures[2] + komi;
 
             for (let r = 0; r < BOARD_SIZE; r++) {
-                for (let c = 0; c < BOARD_SIZE; C++) {
+                for (let c = 0; c < BOARD_SIZE; c++) {
                     if (board[r][c] === 1) blackScore++;
                     if (board[r][c] === 2) whiteScore++;
                 }
             }
 
-            return { black: blackScore, white: whiteScore};
+            return { black: blackScore, white: whiteScore };
         }
 
         function updateUI() {
             drawBoard();
-            const_score = calculateTerritory();
-
-            $("#blackScoreText").text(`B:${score.black}`);
+            const score = calculateTerritory();
+            
+            $("#blackScoreText").text(`B: ${score.black}`);
             $("#whiteScoreText").text(`W: ${score.white}`);
 
             const total = score.black + score.white;
@@ -736,17 +707,16 @@
                 $("#gameStatus").text(currentTurn === 1 ? "Black to move" : "White to move");
             }
         }
-        
 
         function pushChat(sender, text) {
-            const container =$("#chatMessages");
+            const container = $("#chatMessages");
             const senderClass = sender === 'ai' ? 'ai' : 'player';
-            container.append(`<div class="msg ${senderClass}">${text}<div>`);
-            container.scroolTop(container[0].scrollHeight);
+            container.append(`<div class="msg ${senderClass}">${text}</div>`);
+            container.scrollTop(container[0].scrollHeight);
         }
 
         function getRandomQuote(type) {
-            const quotes =botMeta[aiPersonality].quotes[type];
+            const quotes = botMeta[aiPersonality].quotes[type];
             return quotes[Math.floor(Math.random() * quotes.length)];
         }
 
@@ -756,60 +726,59 @@
             let winnerText = "";
 
             if (resigned) {
-                winnerText = currentTurn === playerColor ? "Opponent wins by Resignation" : " You win by Resignation!";
-                pushChat('ai', getRandomQuote(currentTurn === playerCOlor ? 'win' : 'lose'));
+                winnerText = currentTurn === playerColor ? "Opponent wins by Resignation" : "You win by Resignation!";
+                pushChat('ai', getRandomQuote(currentTurn === playerColor ? 'win' : 'lose'));
             } else {
                 if (score.black > score.white) {
-                    winnerText = `Black wins by ${score.black -score.white} points!`;
-                    pushChat('ai', getRandomQuote(playerCOlor === 1 ? 'lose' : 'win'));
-                }else {
+                    winnerText = `Black wins by ${score.black - score.white} points!`;
+                    pushChat('ai', getRandomQuote(playerColor === 1 ? 'lose' : 'win'));
+                } else {
                     winnerText = `White wins by ${score.white - score.black} points!`;
-                    pushChat('ai', getRandomQuote(playerColor === 1 ? 'lose': 'win'));
+                    pushChat('ai', getRandomQuote(playerColor === 2 ? 'lose' : 'win'));
                 }
             }
 
-            $("#gameStatus").text(`GameOver - $[winnerText]`).css('color','#e74c3c');
+            $("#gameStatus").text(`Game Over - ${winnerText}`).css('color', '#e74c3c');
         }
 
         $(document).ready(function() {
             $(".options-grid button").click(function() {
                 $(this).siblings().removeClass('selected');
-                    $(this).siblings().removeClass('selected');
-                    $(this).addClass('selected');
+                $(this).addClass('selected');
             });
 
-            $("startGameBtn").click(function() {
+            $("#startGameBtn").click(function() {
                 let chosenSide = $("[data-side].selected").data('side');
-                aiPersonality = $("[data=ai].selected").data('ai');
+                aiPersonality = $("[data-ai].selected").data('ai');
 
                 if (chosenSide === 'r') {
-                    playerColor = chosenSide === 'b' ? 1:2;
+                    playerColor = Math.random() < 0.5 ? 1 : 2;
                 } else {
-                    playerColor = chosenSide === 'b' ? 1:2;
+                    playerColor = chosenSide === 'b' ? 1 : 2;
                 }
                 aiColor = playerColor === 1 ? 2 : 1;
 
                 const meta = botMeta[aiPersonality];
                 $("#botName").text(meta.name);
                 $("#botTitle").text(meta.title);
-
-                $("#botAvatar").css ({
+                
+                $("#botAvatar").css({
                     'background-image': 'none',
-                    'background-color' : meta.avatarBg,
+                    'background-color': meta.avatarBg,
                     'display': 'flex',
-                    'align-items':'center',
+                    'align-items': 'center',
                     'justify-content': 'center',
-                    'color':'#fff',
-                    'font-weight':'bold',
+                    'color': '#fff',
+                    'font-weight': 'bold',
                     'font-size': '1.2rem'
                 }).text(meta.initials);
 
                 $("#setupScreen").hide();
-                $("boardWrapper").css('display', 'flex');
+                $("#boardWrapper").css('display', 'flex');
                 $("#sidebarPanel").css('display', 'flex');
 
                 board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0));
-                captures = {1:0, 2:0};
+                captures = { 1: 0, 2: 0 };
                 currentTurn = 1;
                 gameOver = false;
                 passCount = 0;
@@ -818,37 +787,36 @@
                 pushChat('ai', getRandomQuote('start'));
                 updateUI();
 
-                if (player === 2) {
+                if (playerColor === 2) {
                     setTimeout(executeAIMove, 900);
                 }
             });
 
             $("#goCanvas").click(function(e) {
-                if (currentTurn != playerColor || gameOver) return;
+                if (currentTurn !== playerColor || gameOver) return;
 
-                const rect = canvas.getBoundingCLientRect();
+                const rect = canvas.getBoundingClientRect();
                 const x = e.clientX - rect.left;
-                const y = e.clientY -rect.top;
+                const y = e.clientY - rect.top;
 
                 const c = Math.round(x / cellSize) - 1;
                 const r = Math.round(y / cellSize) - 1;
 
-                if ( r >= 0 && r < BOARD_SIZE && c >=0 && c < BOARD_SIZE) {
+                if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
                     if (tryMove(r, c, playerColor)) {
-                        lastMove = {r:r, c:c};
+                        lastMove = {r: r, c: c};
                         passCount = 0;
-                        pushChat('player',`Plays intersection [${String.fromCharCode(65 + c)}${BOARD_SIZE = r}].`);
-
+                        pushChat('player', `Plays intersection [${String.fromCharCode(65 + c)}${BOARD_SIZE - r}].`);
+                        
                         currentTurn = aiColor;
                         updateUI();
 
                         setTimeout(executeAIMove, 600);
                     } else {
-                        $("#gameStatus").text("Invalid Move (Suicide or Occupied)").css('color','#fa3e3e');
+                        $("#gameStatus").text("Invalid Move (Suicide or Occupied)").css('color', '#fa3e3e');
                         setTimeout(() => {
-                            if(!gameOver) $ ("#fameStauts").text(currentTurn === 1 ? "Black to move" : "White to move").css('color','');
+                            if(!gameOver) $("#gameStatus").text(currentTurn === 1 ? "Black to move" : "White to move").css('color', '');
                         }, 1200);
-                        
                     }
                 }
             });
@@ -856,80 +824,29 @@
             $("#passBtn").click(function() {
                 if (currentTurn !== playerColor || gameOver) return;
                 passCount++;
-                pushChat('player',"Passes turn.");
-                if (passCount >=2) {
+                pushChat('player', "Passes turn.");
+                if (passCount >= 2) {
                     triggerEndGame();
                 } else {
                     currentTurn = aiColor;
                     updateUI();
-                    setTimeOut(executeAIMove, 600);
+                    setTimeout(executeAIMove, 600);
                 }
             });
 
-            $("resignBtn").click(function() {
+            $("#resignBtn").click(function() {
                 if (gameOver) return;
-                trigerEndGame(true);
+                triggerEndGame(true);
             });
 
             $("#menuBtn").click(function() {
                 $("#boardWrapper").hide();
                 $("#sidebarPanel").hide();
                 $("#chatMessages").empty();
-                $("#gameStatus").css('color','');
+                $("#gameStatus").css('color', '');
                 $("#setupScreen").show();
             });
         });
- </script>
-
+    </script>
 </body>
-
-
-
-
-
-                    
-                
-
-                        
-
-
-            
-        
-        
-
-
-
-
-
-
-
-
-
-            
-
-
-
-            
-            
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
