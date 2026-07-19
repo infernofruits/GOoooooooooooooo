@@ -738,7 +738,43 @@
         }
         
 
+        function pushChat(sender, text) {
+            const container =$("#chatMessages");
+            const senderClass = sender === 'ai' ? 'ai' : 'player';
+            container.append(`<div class="msg ${senderClass}">${text}<div>`);
+            container.scroolTop(container[0].scrollHeight);
+        }
+
+        function getRandomQuote(type) {
+            const quotes =botMeta[aiPersonality].quotes[type];
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        function triggerEndGame(resigned = false) {
+            gameOver = true;
+            const score = calculateTerritory();
+            let winnerText = "";
+
+            if (resigned) {
+                winnerText = currentTurn === playerColor ? "Opponent wins by Resignation" : " You win by Resignation!";
+                pushChat('ai', getRandomQuote(currentTurn === playerCOlor ? 'win' : 'lose'));
+            } else {
+                if (score.black > score.white) {
+                    winnerText = `Black wins by ${score.black -score.white} points!`;
+                    pushChat('ai', getRandomQuote(playerCOlor === 1 ? 'lose' : 'win'));
+                }else {
+                    winnerText = `White wins by ${score.white - score.black} points!`;
+                    pushChat('ai', getRandomQuote(playerColor === 1 ? 'lose': 'win'));
+                }
+            }
+
+            $("#gameStatus").text(`GameOver - $[winnerText]`).css('color','#e74c3c');
+        }
+
         
+
+                    
+                
 
                         
 
